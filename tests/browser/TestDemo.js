@@ -1,3 +1,6 @@
+// https://github.com/pixijs/pixi.js/issues/1785
+require('es5-shim');
+
 var page = require('webpage').create();
 var fs = require('fs');
 var Resurrect = require('./lib/resurrect');

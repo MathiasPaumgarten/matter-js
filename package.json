@@ -20,6 +20,7 @@
     "rigid body physics"
   ],
   "devDependencies": {
+    "es5-shim": "^4.1.10",
     "fast-json-patch": "^0.5.4",
     "grunt": "~0.4.2",
     "grunt-contrib-concat": "~0.3.0",
