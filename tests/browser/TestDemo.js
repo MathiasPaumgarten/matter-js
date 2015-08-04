@@ -1,3 +1,6 @@
+// https://github.com/pixijs/pixi.js/issues/1785
+require('phantomjs-polyfill');
+
 var page = require('webpage').create();
 var fs = require('fs');
 var Resurrect = require('./lib/resurrect');
@@ -23,7 +26,7 @@ var test = function(status) {
         console.log('failed to load', testUrl);
         console.log('check dev server is running!');
         console.log('use `grunt dev`');
-        phantom.exit(1);
+        exit(1);
         return;
     }
 
@@ -142,8 +145,15 @@ var test = function(status) {
         console.log('use --diff for diff log');
     }
 
-    phantom.exit(!isOk);
+    exit(!isOk);
 };
+
+function exit(code) {
+    // https://stackoverflow.com/questions/26608391/using-phantomjs-to-embed-all-images-of-a-webpage-produces-warnings-but-works
+    setTimeout(function(){
+        phantom.exit(code);
+    }, 0);
+}
 
 function arg(name) {
     var index = system.args.indexOf(name);
@@ -164,7 +174,7 @@ page.onError = function(msg, trace) {
         }
 
         console.log(msgStack.join('\n'));
-        phantom.exit(1);
+        exit(1);
     }, 0);
 };
 
@@ -174,7 +184,7 @@ page.onResourceReceived = function(res) {
         if (res.stage === 'end'
             && (res.status !== 304 && res.status !== 200 && res.status !== null)) {
             console.log('error', res.status, res.url);
-            phantom.exit(1);
+            exit(1);
         }
     }, 0);
 };

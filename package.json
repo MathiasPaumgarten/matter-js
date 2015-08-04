@@ -30,7 +30,8 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-yuidoc": "~0.5.1",
     "grunt-preprocess": "^4.1.0",
-    "grunt-shell": "^1.1.2"
+    "grunt-shell": "^1.1.2",
+    "phantomjs-polyfill": "0.0.1"
   },
   "scripts": {
     "dev": "npm install && grunt dev",
