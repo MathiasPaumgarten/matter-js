@@ -1,6 +1,3 @@
-// https://github.com/pixijs/pixi.js/issues/1785
-require('phantomjs-polyfill');
-
 var page = require('webpage').create();
 var fs = require('fs');
 var Resurrect = require('./lib/resurrect');
